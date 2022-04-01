@@ -44,11 +44,6 @@ $ rspec spec --format documentation
 - Twitter: [@MoisesH42060050](https://twitter.com/MoisesH42060050)
 - LinkedIn: [Moises Hernandez Coronado](https://www.linkedin.com/in/moises-hernandez-9bbb17145/)
 
-👤 **Alexander Odufuye**
-
-- GitHub: [@alexander16108](https://github.com/alexander16108)
-- LinkedIn: [alexander](https://www.linkedin.com/in/codingrex/)
-
 ## Contributing
 
 Contributions, issues, and feature requests are welcome!
