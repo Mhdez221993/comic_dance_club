@@ -7,20 +7,12 @@ const SET_DESTROY_USER_SESSION = 'auth/session/SET_DESTROY_USER_SESSION';
 const initialState = {
   name: '',
   email: '',
-  Authorization: null,
-  success: null
+  Authorization: null
 };
-
-const setSingUp = payload => ({
-  type: SET_USER_REGISTRATION,
-  payload,
-});
 
 export const setSingUpApi = (endPoint, payload) => async dispatch => {
   const data = await authApi(endPoint, payload);
-  if (data) {
-    dispatch(setSingUp(data));
-  }
+  return data
 };
 
 const setSingOut = payload => ({
@@ -41,14 +33,17 @@ const setSingIn = payload => ({
 export const setSingInApi = (endPoint, payload) => async dispatch => {
   const data = await authApi(endPoint, payload);
   if (data) {
-    dispatch(setSingIn(data));
+    dispatch(setSingIn());
   }
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_REGISTRATION:
-      return action.payload
+      return {
+        ...state,
+        success: true,
+      }
 
     case SET_DESTROY_USER_SESSION:
       return {
