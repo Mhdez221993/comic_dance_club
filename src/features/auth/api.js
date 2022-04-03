@@ -1,4 +1,4 @@
-const BASE_URL = 'https://comic-dance-club.herokuapp.com';
+const BASE_URL = 'http://localhost:3000';
 
 const authApi = async (endPoint = 'users', payload = {}) => {
   const requestOptions = {
@@ -7,13 +7,12 @@ const authApi = async (endPoint = 'users', payload = {}) => {
     body: JSON.stringify({ user: payload })
   };
 
-  const response = await fetch(`${BASE_URL}/${endPoint}`, requestOptions);
-
   try {
+    const response = await fetch(`${BASE_URL}/${endPoint}`, requestOptions);
     const data = await response.json();
     return data;
-  } catch (error) {
-    return {}
+  } catch (e) {
+    return { message: ['Failed to fetch'], status: false }
   }
 };
 
