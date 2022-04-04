@@ -1,20 +1,13 @@
-const BASE_URL = 'https://comic-dance-club.herokuapp.com';
+import axios from 'axios';
 
-const authApi = async (endPoint = 'users', payload = {}) => {
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user: payload }),
-  };
+const BASE_URL = 'https://comic-dance-club.herokuapp.com/api/dances';
 
-  const response = await fetch(`${BASE_URL}/${endPoint}`, requestOptions);
-
-  try {
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    return {};
-  }
+export const fetchItems = async () => {
+  const response = await axios.get(BASE_URL);
+  return response.data;
 };
 
-export default authApi;
+export const createItems = async () => {
+  const response = await axios.get(BASE_URL);
+  return response.data;
+};
