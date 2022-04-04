@@ -6,7 +6,7 @@ import { setSingInApi } from './reducer';
 const Session = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { message, status } = useSelector((state) => state.authReducer);
+  const { message } = useSelector((state) => state.authReducer);
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -17,13 +17,14 @@ const Session = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
     dispatch(setSingInApi('users/sign_in', state))
-      .then(() => {
-        if (status) {
+      .then((res) => {
+        if (res.status) {
           navigate('/', { replace: true });
         }
       });
+
+    event.preventDefault();
   };
 
   return (

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://comic-dance-club.herokuapp.com';
 
 const authApi = (endPoint = 'users', payload = {}) => axios
   .post(`${BASE_URL}/${endPoint}`, {
@@ -8,7 +8,6 @@ const authApi = (endPoint = 'users', payload = {}) => axios
   })
   .then((response) => {
     if (response.headers.authorization) {
-      localStorage.setItem('user', JSON.stringify(response.data.user));
       localStorage.setItem('token', JSON.stringify(response.headers.authorization));
     }
 

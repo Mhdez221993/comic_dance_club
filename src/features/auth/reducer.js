@@ -32,6 +32,7 @@ const setSingIn = (payload) => ({
 export const setSingInApi = (endPoint, payload) => async (dispatch) => {
   const data = await authApi(endPoint, payload);
   dispatch(setSingIn(data));
+  return data;
 };
 
 const reducer = (state = initialState, action) => {
