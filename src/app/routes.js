@@ -4,7 +4,7 @@ import DestroyItems from '../features/items/Destroy';
 import Items from '../features/items/Index';
 import NewItem from '../features/items/New';
 import Details from '../features/items/Show';
-import Reservations from '../features/reservation/index';
+import Reservations from '../features/reservation/Index';
 import NewReservations from '../features/reservation/New';
 
 const routes = [
@@ -50,4 +50,4 @@ const routes = [
   },
 ];
 
-export default routes
+export default routes;

@@ -4,7 +4,7 @@ const authApi = async (endPoint = 'users', payload = {}) => {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user: payload })
+    body: JSON.stringify({ user: payload }),
   };
 
   const response = await fetch(`${BASE_URL}/${endPoint}`, requestOptions);
@@ -13,7 +13,7 @@ const authApi = async (endPoint = 'users', payload = {}) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    return {}
+    return {};
   }
 };
 

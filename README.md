@@ -26,6 +26,16 @@ Run in your terminal `git clone git@github.com:Mhdez221993/comic_dance_club_back
 $ rspec spec --format documentation
 ```
 
+## Check linters and fix them
+
+```
+npx stylelint "**/*.{css,scss}" --fix
+```
+
+```
+npx eslint . --fix
+```
+
 
 ## Helpful links
 - [A Devise-JWT Tutorial For Authenticating Users in Ruby on Rails](https://medium.com/ruby-daily/a-devise-jwt-tutorial-for-authenticating-users-in-ruby-on-rails-ca214898318e)
@@ -34,6 +44,7 @@ $ rspec spec --format documentation
 - [Testing a Rails API with RSpec](https://blog.devgenius.io/testing-a-rails-api-with-rspec-82dedc9f15df)
 - [ruby on rails: heroku: Missing `secret_key_base` for 'production' environment](https://stackoverflow.com/questions/38167835/ruby-on-rails-heroku-missing-secret-key-base-for-production-environment)
 - [Adding Swagger Docs to a Rails 6 API Using Rswag](https://medium.com/@clarkjohnson_85334/adding-swagger-docs-to-a-rails-6-api-using-rswag-a3e8bc577986)
+- [Reading response headers with Fetch API](https://stackoverflow.com/questions/43344819/reading-response-headers-with-fetch-api)
 
 
 ## Authors
