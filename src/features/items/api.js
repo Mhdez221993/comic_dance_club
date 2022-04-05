@@ -14,3 +14,10 @@ export const createItem = async (payload = {}) => {
   });
   return res.data;
 };
+
+export const deleteItem = async (id) => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  await axios.delete(`${BASE_URL}/${id}`, {
+    headers: { Authorization: token },
+  });
+};
