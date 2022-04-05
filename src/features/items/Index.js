@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadItems } from './reducer';
 
 const Items = () => {
-  const items = useSelector(({ itemsReducer }) => itemsReducer.items);
+  const items = useSelector((state) => state.itemsReducer.items);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!items.length) {
-      dispatch(loadItems());
-    }
+    dispatch(loadItems());
   }, []);
 
   return (
