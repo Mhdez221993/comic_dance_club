@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { deleteItem } from './reducer';
 
 const Details = () => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({});
+  const navigate = useNavigate();
   const items = useSelector((state) => state.itemsReducer.items);
   const { itemId } = useParams();
   useState(() => {
@@ -11,7 +14,12 @@ const Details = () => {
     setState(item[0]);
   });
 
-  console.log(state);
+  const handleDelte = (event) => {
+    event.preventDefault();
+    dispatch(deleteItem(state.id));
+    navigate('/', { replace: true });
+  };
+
   return (
     <div>
       <h1>Details Page</h1>
@@ -26,6 +34,9 @@ const Details = () => {
         <p>{state.total}</p>
         <p>{state.duration}</p>
         <p>{state.apr}</p>
+      </div>
+      <div>
+        <button type="button" onClick={handleDelte}>Delete</button>
       </div>
     </div>
   );
