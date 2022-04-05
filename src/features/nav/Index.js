@@ -11,7 +11,7 @@ const NavBar = ({ title, routes }) => (
           <h1 className="nav-title">{title}</h1>
         </Link>
       </li>
-      {routes.map(({ name, path }) => (
+      {routes.map(({ name, path }) => name !== 'Ditails' && (
         <li key={path} className="nav-links">
           <NavLink className="links" exact="true" to={path}>{name}</NavLink>
         </li>
