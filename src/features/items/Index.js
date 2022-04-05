@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { loadItems } from './reducer';
 
 const Items = () => {
@@ -16,15 +17,12 @@ const Items = () => {
       {items.map((v) => (
         <li key={v.id}>
           <div>
-            <img src={v.picture} alt={v.description} />
+            <Link to={`/items/${v.id}`}>
+              <img src={v.picture} alt={v.description} />
+            </Link>
           </div>
           <p>{v.name}</p>
           <p>{v.description}</p>
-          <p>{v.finance}</p>
-          <p>{v.option}</p>
-          <p>{v.total}</p>
-          <p>{v.duration}</p>
-          <p>{v.apr}</p>
         </li>
       ))}
     </ul>

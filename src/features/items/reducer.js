@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import * as API from './api';
 
-const SET_ITEMS = 'item/SET_ITEMS';
+const SET_ALL_ITEMS = 'item/SET_ALL_ITEMS';
 const SET_CREATE_ITEM = 'item/SET_CREATE_ITEM';
 
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const setItems = (payload) => ({
-  type: SET_ITEMS,
+  type: SET_ALL_ITEMS,
   payload,
 });
 
@@ -31,9 +31,13 @@ export const createItem = (item) => async (dispatch) => {
   return data;
 };
 
+export const deleteItem = (id) => async () => {
+  await API.deleteItem(id);
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_ITEMS:
+    case SET_ALL_ITEMS:
       return { ...state, items: action.payload };
 
     case SET_CREATE_ITEM:
