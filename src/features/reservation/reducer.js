@@ -1,65 +1,28 @@
 /* eslint-disable camelcase */
-import authApi from './api';
+import * as API from './api';
 
-const SET_USER_REGISTRATION = 'auth/registration/SET_USER_REGISTRATION';
-const SET_USER_SESSION = 'auth/session/SET_USER_SESSION';
-const SET_DESTROY_USER_SESSION = 'auth/session/SET_DESTROY_USER_SESSION';
+const SET_LOADITEMS = 'reservation/loadItems/SET_LOADITEMS';
+
 const initialState = {
-  name: '',
-  email: '',
-  Authorization: null,
-  success: null,
+  reservations: [],
 };
 
-const setSingUp = (payload) => ({
-  type: SET_USER_REGISTRATION,
+const setLoadReservations = (payload) => ({
+  type: SET_LOADITEMS,
   payload,
 });
 
-export const setSingUpApi = (endPoint, payload) => async (dispatch) => {
-  const data = await authApi(endPoint, payload);
+export const loadReservations = () => async (dispatch) => {
+  const data = await API.loadReservations();
   if (data) {
-    dispatch(setSingUp(data));
-  }
-};
-
-const setSingOut = (payload) => ({
-  type: SET_DESTROY_USER_SESSION,
-  payload,
-});
-
-export const setSingOutApi = (endPoint) => async (dispatch) => {
-  authApi(endPoint);
-  dispatch(setSingOut());
-};
-
-const setSingIn = (payload) => ({
-  type: SET_USER_SESSION,
-  payload,
-});
-
-export const setSingInApi = (endPoint, payload) => async (dispatch) => {
-  const data = await authApi(endPoint, payload);
-  if (data) {
-    dispatch(setSingIn(data));
+    dispatch(setLoadReservations(data));
   }
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USER_REGISTRATION:
-      return action.payload;
-
-    case SET_DESTROY_USER_SESSION:
-      return {
-        name: '',
-        email: '',
-        Authorization: null,
-        success: null,
-      };
-
-    case SET_USER_SESSION:
-      return action.payload;
+    case SET_LOADITEMS:
+      return { ...state, reservations: action.payload };
 
     default:
       return state;
