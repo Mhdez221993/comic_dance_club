@@ -7,9 +7,7 @@ const Items = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!items.length) {
-      dispatch(loadItems());
-    }
+    dispatch(loadItems());
   }, []);
 
   return (
