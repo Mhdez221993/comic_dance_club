@@ -1,10 +1,12 @@
 /* eslint-disable camelcase */
-import { fetchItems } from './api';
+import * as API from './api';
 
 const SET_ITEMS = 'item/SET_ITEMS';
+const SET_CREATE_ITEM = 'item/SET_CREATE_ITEM';
 
 const initialState = {
   items: [],
+  message: [],
 };
 
 const setItems = (payload) => ({
@@ -12,15 +14,30 @@ const setItems = (payload) => ({
   payload,
 });
 
+const setCreateItem = (payload) => ({
+  type: SET_CREATE_ITEM,
+  payload,
+});
+
 export const loadItems = () => async (dispatch) => {
-  const data = await fetchItems();
-  dispatch(setItems(data));
+  const response = await API.fetchItems();
+  dispatch(setItems(response));
+  return response;
+};
+
+export const createItem = (item) => async (dispatch) => {
+  const data = await API.createItem(item);
+  dispatch(setCreateItem(data.message));
+  return data;
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ITEMS:
       return { ...state, items: action.payload };
+
+    case SET_CREATE_ITEM:
+      return { ...state, message: action.payload };
 
     default:
       return state;
