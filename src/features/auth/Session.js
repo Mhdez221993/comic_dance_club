@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setSingInApi } from './reducer';
 
 const Session = () => {
@@ -67,6 +67,7 @@ const Session = () => {
           </button>
         </div>
       </form>
+      <Link to="/sign_up">Sign Up</Link>
     </div>
   );
 };
