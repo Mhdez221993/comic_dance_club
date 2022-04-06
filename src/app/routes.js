@@ -40,7 +40,7 @@ const routes = [
   },
   {
     name: 'New Reservations',
-    path: '/reservations/:id',
+    path: '/reservations/new',
     component: <NewReservations />,
   },
   {
