@@ -1,3 +1,4 @@
+import DestroySession from '../features/auth/DestroySession';
 import Registration from '../features/auth/Registration';
 import Session from '../features/auth/Session';
 import DestroyItems from '../features/items/Destroy';
@@ -14,18 +15,8 @@ const routes = [
     component: <Items />,
   },
   {
-    name: 'Sign Up',
-    path: '/sign_up',
-    component: <Registration />,
-  },
-  {
-    name: 'Sing In',
-    path: '/sing_in',
-    component: <Session />,
-  },
-  {
     name: 'Create New Item',
-    path: '/items',
+    path: '/items/new',
     component: <NewItem />,
   },
   {
@@ -44,9 +35,24 @@ const routes = [
     component: <NewReservation itemId={0} />,
   },
   {
-    name: 'Delete',
+    name: 'Delete Item',
     path: '/delete',
     component: <DestroyItems />,
+  },
+  {
+    name: 'Sing In',
+    path: '/sign_in',
+    component: <Session />,
+  },
+  {
+    name: 'Sign Up',
+    path: '/sign_up',
+    component: <Registration />,
+  },
+  {
+    name: 'Sing Out',
+    path: '/sign_out',
+    component: <DestroySession />,
   },
 ];
 

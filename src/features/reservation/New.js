@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createReservation } from './reducer';
@@ -9,6 +9,7 @@ const NewReservation = ({ itemId }) => {
   const navigate = useNavigate();
 
   const items = useSelector((state) => state.itemsReducer.items);
+  const role = useSelector((state) => state.authReducer.role);
   const [state, setState] = useState({
     date: '',
     city: '',
@@ -24,6 +25,12 @@ const NewReservation = ({ itemId }) => {
     dispatch(createReservation(state));
     navigate('/reservations', { replace: true });
   };
+
+  useEffect(() => {
+    if (!role) {
+      navigate('/sign_in', { replace: true });
+    }
+  }, []);
 
   return (
     <div>

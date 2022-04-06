@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setSingUpApi } from './reducer';
 
 const Registration = () => {
@@ -26,7 +26,7 @@ const Registration = () => {
       .then((response) => {
         setMessage(response.message);
         if (response.status) {
-          navigate('/sing_in', { replace: true });
+          navigate('/sign_in', { replace: true });
         }
       })
       .catch((e) => {
@@ -100,6 +100,7 @@ const Registration = () => {
         </div>
 
       </form>
+      <Link to="/sign_in">Sing In</Link>
     </div>
   );
 };
