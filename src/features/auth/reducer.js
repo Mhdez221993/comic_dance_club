@@ -7,6 +7,7 @@ const SET_DESTROY_USER_SESSION = 'auth/session/SET_DESTROY_USER_SESSION';
 const initialState = {
   message: [],
   status: '',
+  role: '',
 };
 
 export const setSingUpApi = (endPoint, payload) => async () => {
