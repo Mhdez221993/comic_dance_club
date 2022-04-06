@@ -20,7 +20,7 @@ const routes = [
   },
   {
     name: 'Sing In',
-    path: '/sing_in',
+    path: '/sign_in',
     component: <Session />,
   },
   {
