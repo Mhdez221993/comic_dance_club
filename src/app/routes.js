@@ -5,7 +5,7 @@ import Items from '../features/items/Index';
 import NewItem from '../features/items/New';
 import Details from '../features/items/Show';
 import Reservations from '../features/reservation/Index';
-import NewReservations from '../features/reservation/New';
+import NewReservation from '../features/reservation/New';
 
 const routes = [
   {
@@ -24,7 +24,7 @@ const routes = [
     component: <Session />,
   },
   {
-    name: 'New',
+    name: 'Create New Item',
     path: '/items',
     component: <NewItem />,
   },
@@ -40,8 +40,8 @@ const routes = [
   },
   {
     name: 'New Reservations',
-    path: '/reservations/:id',
-    component: <NewReservations />,
+    path: '/reservations/new',
+    component: <NewReservation itemId={0} />,
   },
   {
     name: 'Delete',

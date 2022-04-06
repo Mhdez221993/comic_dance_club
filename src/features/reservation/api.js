@@ -1,20 +1,21 @@
-const BASE_URL = 'https://comic-dance-club.herokuapp.com';
+import axios from 'axios';
 
-const authApi = async (endPoint = 'users', payload = {}) => {
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ user: payload }),
-  };
+const BASE_URL = 'http://localhost:3000/api/reservations';
 
-  const response = await fetch(`${BASE_URL}/${endPoint}`, requestOptions);
+export const loadReservations = async () => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  const res = await axios.get(BASE_URL, {
+    headers: { Authorization: token },
+  });
 
-  try {
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    return {};
-  }
+  return res.data;
 };
 
-export default authApi;
+export const createReservation = async (payload = {}) => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  const res = await axios.post(BASE_URL, { reservation: payload }, {
+    headers: { Authorization: token },
+  });
+
+  return res.data;
+};

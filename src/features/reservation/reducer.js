@@ -1,65 +1,43 @@
 /* eslint-disable camelcase */
-import authApi from './api';
+import * as API from './api';
 
-const SET_USER_REGISTRATION = 'auth/registration/SET_USER_REGISTRATION';
-const SET_USER_SESSION = 'auth/session/SET_USER_SESSION';
-const SET_DESTROY_USER_SESSION = 'auth/session/SET_DESTROY_USER_SESSION';
+const SET_LOADITEMS = 'reservation/loadItems/SET_LOADITEMS';
+const SET_CREATE_RESERVATION = 'reservation/new/SET_CREATE_RESERVATION';
+
 const initialState = {
-  name: '',
-  email: '',
-  Authorization: null,
-  success: null,
+  reservations: [],
+  confirmation: '',
 };
 
-const setSingUp = (payload) => ({
-  type: SET_USER_REGISTRATION,
+const setcreateReservation = (payload) => ({
+  type: SET_CREATE_RESERVATION,
   payload,
 });
 
-export const setSingUpApi = (endPoint, payload) => async (dispatch) => {
-  const data = await authApi(endPoint, payload);
+const setLoadReservations = (payload) => ({
+  type: SET_LOADITEMS,
+  payload,
+});
+
+export const loadReservations = () => async (dispatch) => {
+  const data = await API.loadReservations();
   if (data) {
-    dispatch(setSingUp(data));
+    dispatch(setLoadReservations(data));
   }
 };
 
-const setSingOut = (payload) => ({
-  type: SET_DESTROY_USER_SESSION,
-  payload,
-});
-
-export const setSingOutApi = (endPoint) => async (dispatch) => {
-  authApi(endPoint);
-  dispatch(setSingOut());
-};
-
-const setSingIn = (payload) => ({
-  type: SET_USER_SESSION,
-  payload,
-});
-
-export const setSingInApi = (endPoint, payload) => async (dispatch) => {
-  const data = await authApi(endPoint, payload);
-  if (data) {
-    dispatch(setSingIn(data));
-  }
+export const createReservation = (payload) => async (dispatch) => {
+  const data = await API.createReservation(payload);
+  dispatch(setcreateReservation(data));
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USER_REGISTRATION:
-      return action.payload;
+    case SET_LOADITEMS:
+      return { ...state, reservations: action.payload };
 
-    case SET_DESTROY_USER_SESSION:
-      return {
-        name: '',
-        email: '',
-        Authorization: null,
-        success: null,
-      };
-
-    case SET_USER_SESSION:
-      return action.payload;
+    case SET_CREATE_RESERVATION:
+      return { ...state, confirmation: action.payload };
 
     default:
       return state;

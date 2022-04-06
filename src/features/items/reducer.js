@@ -22,7 +22,6 @@ const setCreateItem = (payload) => ({
 export const loadItems = () => async (dispatch) => {
   const response = await API.fetchItems();
   dispatch(setItems(response));
-  return response;
 };
 
 export const createItem = (item) => async (dispatch) => {
@@ -31,8 +30,10 @@ export const createItem = (item) => async (dispatch) => {
   return data;
 };
 
-export const deleteItem = (id) => async () => {
+export const deleteItem = (id) => async (dispatch) => {
   await API.deleteItem(id);
+  const response = await API.fetchItems();
+  dispatch(setItems(response));
 };
 
 const reducer = (state = initialState, action) => {

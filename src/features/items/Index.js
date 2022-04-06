@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { loadItems } from './reducer';
 
 const Items = () => {
-  const items = useSelector((state) => state.itemsReducer.items);
   const dispatch = useDispatch();
+  const items = useSelector((state) => state.itemsReducer.items);
 
   useEffect(() => {
     dispatch(loadItems());
