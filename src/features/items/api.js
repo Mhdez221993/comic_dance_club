@@ -4,7 +4,8 @@ const BASE_URL = 'http://localhost:3000/api/dances';
 
 export const fetchItems = async () => {
   const response = await axios.get(BASE_URL);
-  return response.data;
+  const data = await response.data;
+  return data;
 };
 
 export const createItem = async (payload = {}) => {

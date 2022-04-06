@@ -22,7 +22,6 @@ const setCreateItem = (payload) => ({
 export const loadItems = () => async (dispatch) => {
   const response = await API.fetchItems();
   dispatch(setItems(response));
-  return response;
 };
 
 export const createItem = (item) => async (dispatch) => {
