@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import NewReservation from '../reservation/New';
@@ -50,7 +51,7 @@ const Details = () => {
       </div>
 
       <div>
-        <button type="button" onClick={handleDelte}>Delete</button>
+        <Button type="button" onClick={handleDelte} variant="primary">Delete</Button>
       </div>
 
     </div>
