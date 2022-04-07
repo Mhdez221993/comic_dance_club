@@ -8,14 +8,21 @@ function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <div className="app">
-        <NavBar title="Comic Dance Club" routes={routes} />
-        <Routes>
-          {routes.map(
-            ({ path, component }) => (
-              <Route key={path} path={path} element={component} />
-            ),
-          )}
-        </Routes>
+
+        <div className="nav">
+          <NavBar title="Comic Dance Club" routes={routes} />
+        </div>
+
+        <div className="content">
+          <Routes>
+            {routes.map(
+              ({ path, component }) => (
+                <Route key={path} path={path} element={component} />
+              ),
+            )}
+          </Routes>
+        </div>
+
       </div>
     </Router>
   );
