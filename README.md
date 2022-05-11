@@ -1,4 +1,4 @@
-# Comic dance club front-end apps
+# Comic dance club
 
 The project we are going to build for the Final Capstone Project is based on an app to book an appointment to try a new dance class.
 
