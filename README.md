@@ -5,7 +5,6 @@ The project we are going to build for the Final Capstone Project is based on an 
 [kanban board](https://github.com/alexander16108/comic-dance-frontend-app/projects/1)
 -------------------------
 ![kanban board before](https://user-images.githubusercontent.com/60612329/160345329-abd16358-38cc-403a-9b5c-47877230242a.png)
-![kanban board after]()
 
 ### [Api-docs](https://comic-dance-club.herokuapp.com/api-docs/index.html)
 ### [Live demo](https://comic-dance-club.herokuapp.com)
